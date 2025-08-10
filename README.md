@@ -46,6 +46,50 @@ git push -u origin main
 # (setup-guide.md参照)
 ```
 
+## 💻 技術構成・設計思想
+
+### 🎯 Core Technologies
+
+| Layer | Technology | Purpose |
+|-------|-----------|---------|
+| **Frontend** | Vanilla JS + HTML5 + CSS3 | ダッシュボード・UI制御 |
+| **Visualization** | Chart.js | バーンダウン・メトリクス可視化 |
+| **Automation** | GitHub Actions (YAML) | データ収集・自動化 |
+| **Setup** | Bash Scripts | ワンクリック環境構築 |
+| **Data** | JSON + GitHub API | メトリクス・進捗データ |
+
+### 🌟 なぜこの構成？
+
+#### **✅ Web Standards First**
+- **フレームワーク依存なし**: React・Vue等の重いライブラリ不使用
+- **軽量・高速**: 最小限の依存関係、瞬時読み込み
+- **長期保守性**: Web標準技術で10年後も動作保証
+
+#### **🚀 GitHub Complete Integration**
+- **追加インフラ不要**: サーバー・DB・ホスティング費用 $0
+- **統合セキュリティ**: GitHub認証・権限管理を活用
+- **CI/CD標準**: Actions で完全自動化
+
+#### **🌍 Universal Compatibility**  
+- **ブラウザ対応**: モダンブラウザすべてでネイティブ動作
+- **学習コスト最小**: Web開発者なら即座に理解・カスタマイズ
+- **OSS貢献**: 技術的障壁なし、誰でも参加可能
+
+#### **📈 Enterprise Ready**
+- **スケーラブル**: 小規模チーム〜大企業まで対応
+- **カスタマイズ容易**: プラグイン・テーマ対応可能
+- **セキュア**: GitHub Enterprise・SSO対応
+
+### 🎯 競合比較
+
+| 項目 | Agile GitHub Suite | Jira | Linear |
+|------|-------------------|------|--------|
+| **コスト** | $0 | $7-14/user/month | $8-16/user/month |
+| **学習コスト** | ⭐⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐ |
+| **技術依存** | Web標準のみ | Java・複雑 | React・Node.js |
+| **保守性** | ⭐⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐ |
+| **カスタマイズ** | ⭐⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐ |
+
 ## 📊 Burndown Chart
 
 自動生成されるバーンダウンチャートは以下で確認できます：
@@ -53,8 +97,9 @@ git push -u origin main
 **URL**: `https://pandalize.github.io/agile/burndown/`
 
 - 毎平日朝9時に自動更新
-- スプリント別の進捗可視化
+- スプリント別の進捗可視化  
 - 理想線との比較表示
+- ベロシティ・完了予測計算
 
 ## 📋 Issue Management
 
