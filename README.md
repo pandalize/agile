@@ -1,6 +1,9 @@
-# 🚀 Agile Development Management System
+# 🚀 アジャイル GitHub スイート
 
-pandaizeチーム向けのGitHubベースアジャイル開発管理システム
+GitHub エコシステムで構築された完全なアジャイル開発管理システム
+
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live%20Demo-green)](https://pandalize.github.io/agile/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## ✨ Features
 
