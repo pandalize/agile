@@ -106,20 +106,36 @@ git push -u origin main
 
 ## 📚 Documentation
 
-- [Detailed Tool Comparison](agile-tools-comparison.md)
-- [Setup Guide](setup-guide.md)
-- [GitHub Projects Best Practices](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/best-practices-for-projects)
+- [📊 Project Status & Strategy](project-status-and-strategy.md) - 現状、使い方、OSS戦略
+- [🔧 Setup Guide](setup-guide.md) - 詳細セットアップ手順
+- [⚖️ Tool Comparison](agile-tools-comparison.md) - ツール比較分析
+- [📋 GitHub Projects Best Practices](https://docs.github.com/en/issues/planning-and-tracking-with-projects/learning-about-projects/best-practices-for-projects)
+
+## 🚀 OSS Roadmap
+
+このプロジェクトは **agile-github-suite** としてOSS化を予定：
+
+### 🎯 Vision
+GitHub完結・$0コストのフルアジャイル管理ツールとして、世界中の開発チームの生産性向上を支援
+
+### 📅 Timeline
+- **Phase 1** (4週間): MVP Release・Community Building
+- **Phase 2** (8週間): GitHub Marketplace・Plugin Ecosystem  
+- **Phase 3** (12週間): Enterprise Features・Global Expansion
+
+詳細は [📊 Project Status & Strategy](project-status-and-strategy.md) を参照
 
 ## 🤝 Contributing
 
 1. Issue作成（Bug報告・機能提案）
-2. Fork & Pull Request
+2. Fork & Pull Request  
 3. Discussion参加
+4. OSS化への貢献歓迎！
 
 ## 📄 License
 
-MIT License - 自由に使用・改変可能
+MIT License - 自由に使用・改変・商用利用可能
 
 ---
 
-**pandalize team** で効率的なアジャイル開発を実現しましょう！ 🎯
+**From pandalize team to global developers** - 効率的なアジャイル開発を世界へ！ 🌟
