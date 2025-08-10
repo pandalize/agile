@@ -39,8 +39,8 @@
         }
         .stats { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px; 
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px; 
             margin: 20px 0; 
         }
         .stat-card { 
@@ -131,6 +131,14 @@
                 <div class="stat-card">
                     <div class="stat-label">期限</div>
                     <div class="stat-value" id="due-date">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">平均ベロシティ</div>
+                    <div class="stat-value" id="velocity">-</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">完了予測日</div>
+                    <div class="stat-value" id="prediction">-</div>
                 </div>
             </div>
         </div>
@@ -255,6 +263,15 @@
                     document.getElementById('completion-rate').textContent = completionRate + '%';
                     document.getElementById('due-date').textContent = 
                         data.milestone.due_on ? new Date(data.milestone.due_on).toLocaleDateString('ja-JP') : '未設定';
+                    
+                    // ベロシティ計算
+                    const velocity = calculateVelocity(data.daily_data);
+                    document.getElementById('velocity').textContent = velocity.toFixed(1) + ' pts/日';
+                    
+                    // 完了予測日計算
+                    const prediction = predictCompletion(latestData.remaining_points, velocity);
+                    document.getElementById('prediction').textContent = prediction;
+                    
                     document.getElementById('last-updated').textContent = 
                         `最終更新: ${new Date(latestData.date).toLocaleDateString('ja-JP')}`;
                 }
@@ -364,6 +381,30 @@
                     }
                 }
             });
+        }
+        
+        // ベロシティ計算関数
+        function calculateVelocity(dailyData) {
+            if (dailyData.length < 2) return 0;
+            
+            let totalBurned = 0;
+            for (let i = 1; i < dailyData.length; i++) {
+                const burned = dailyData[i-1].remaining_points - dailyData[i].remaining_points;
+                if (burned > 0) totalBurned += burned;
+            }
+            return totalBurned / (dailyData.length - 1);
+        }
+        
+        // 完了予測日計算関数
+        function predictCompletion(remainingPoints, velocity) {
+            if (velocity <= 0) return '予測不可';
+            
+            const daysToComplete = Math.ceil(remainingPoints / velocity);
+            const today = new Date();
+            const completionDate = new Date(today);
+            completionDate.setDate(today.getDate() + daysToComplete);
+            
+            return completionDate.toLocaleDateString('ja-JP');
         }
         
         // ページ読み込み時に実行
