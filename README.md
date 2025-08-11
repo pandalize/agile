@@ -26,45 +26,90 @@ GitHub エコシステムで構築された完全なアジャイル開発管理�
 
 ## 🚀 Quick Start
 
-### 🧙‍♂️ セットアップウィザード（最も簡単）
+### 🆕 NPMパッケージ統合（推奨 - 自動更新対応）
+```bash
+# 1. あなたの開発プロジェクトで
+cd your-project-directory
+
+# 2. パッケージをインストール
+npm install @pandalize/agile-github-suite
+
+# 3. セットアップウィザード
+npm run agile:wizard
+
+# 4. または対話的セットアップ
+npm run agile:setup
+
+# 5. 更新時（自動）
+npm run agile:update
+```
+
+**🎯 メリット:**
+- ✅ **自動更新対応** - 最新機能を自動取得
+- ✅ **バージョン管理** - semver準拠の安全な更新
+- ✅ **設定保持** - カスタマイズを自動バックアップ・復元
+- ✅ **簡単導入** - 1コマンドでセットアップ完了
+
+### 🧙‍♂️ セットアップウィザード（GUI）
 GUI で対話的にセットアップ：
 ```bash
-# 1. リポジトリをクローン
-git clone https://github.com/pandalize/agile.git
-cd agile
-
-# 2. ブラウザでウィザードを開く
+# ブラウザでウィザードを開く
 open docs/setup-wizard/index.html
 ```
 
-### 💬 インタラクティブセットアップ
-```bash
-# 対話式で簡単セットアップ
-./scripts/quick-start.sh
-```
+### 🛠️ その他の統合方法
 
-### 🛠️ ワンライナーセットアップ
-```bash
-# 完全自動セットアップ
-./scripts/setup-enhanced.sh -r your-org/your-repo -s "Sprint 1" -d 14
-```
-
-### 📋 Manual Setup
-詳細なセットアップ手順は [setup-guide.md](setup-guide.md) を参照してください。
+<details>
+<summary>📁 ファイルコピー方式</summary>
 
 ```bash
-# 1. リポジトリ初期化
-git init
-git add .
-git commit -m "Initial agile setup"
+# 既存プロジェクトに統合
+cd your-project
+git clone https://github.com/pandalize/agile.git agile-temp
+cp -r agile-temp/.github ./
+cp -r agile-temp/docs ./
+rm -rf agile-temp
 
-# 2. GitHub リポジトリ作成
-gh repo create pandalize/agile --private
-git push -u origin main
-
-# 3. ラベル・マイルストーン・プロジェクトボード作成
-# (setup-guide.md参照)
+# セットアップ実行
+./scripts/setup.sh -r your-org/your-repo -s "Sprint 1" -d 14
 ```
+
+**デメリット:** 手動更新が必要
+</details>
+
+<details>
+<summary>🔗 Git Submodule</summary>
+
+```bash
+cd your-project
+git submodule add https://github.com/pandalize/agile.git agile-tools
+git submodule update --init --recursive
+./agile-tools/scripts/setup.sh -r your-org/your-repo -s "Sprint 1" -d 14
+
+# 更新時
+git submodule update --remote
+```
+
+**デメリット:** 操作が複雑
+</details>
+
+<details>
+<summary>🍴 Fork & Standalone</summary>
+
+```bash
+# GitHubでフォーク後
+git clone https://github.com/YOUR_USERNAME/agile.git
+cd agile
+./scripts/setup.sh -r your-org/your-repo -s "Sprint 1" -d 14
+git remote add upstream https://github.com/pandalize/agile.git
+
+# 更新時
+git fetch upstream
+git merge upstream/main
+```
+
+**デメリット:** 上流の更新が困難
+</details>
 
 ## 💻 技術構成・設計思想
 
